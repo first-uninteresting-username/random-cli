@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
 {
-  packages = [ pkgs.git ];
+  languages.go.enable = true;
 
   git-hooks.hooks = {
     check-added-large-files.enable = true;
@@ -9,11 +7,13 @@
     detect-private-keys.enable = true;
     end-of-file-fixer = {
       enable = true;
-      excludes = [ "devenv.lock" ];
+      excludes = ["devenv.lock"];
     };
     trim-trailing-whitespace.enable = true;
     check-json.enable = true;
     check-yaml.enable = true;
     alejandra.enable = true;
+    gofmt.enable = true;
+    govet.enable = true;
   };
 }
