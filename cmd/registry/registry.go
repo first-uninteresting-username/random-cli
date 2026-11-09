@@ -29,13 +29,13 @@ func Register(a Action) error {
 	return nil
 }
 
-func GetAction(name string) (Action, error) {
+func GetAction(name string, allowDestructive bool) (Action, error) {
 	if len(actions) == 0 {
 		return Action{}, fmt.Errorf("action list is empty")
 	}
 
 	if name == "" {
-		return getRandomAction()
+		return getRandomAction(allowDestructive)
 	}
 
 	for _, a := range actions {
@@ -47,12 +47,24 @@ func GetAction(name string) (Action, error) {
 	return Action{}, fmt.Errorf("no action named %q", name)
 }
 
-func getRandomAction() (Action, error) {
+func getRandomAction(allowDestructive bool) (Action, error) {
 	if len(actions) == 0 {
 		return Action{}, fmt.Errorf("action list is empty")
 	}
-	index := rand.IntN(len(actions))
-	return actions[index], nil
+
+	if allowDestructive == true {
+		index := rand.IntN(len(actions))
+		return actions[index], nil
+	}
+
+	a := Action{
+		IsDestructive: true,
+	}
+	for a.IsDestructive {
+		a = actions[rand.IntN(len(actions))]
+	}
+
+	return a, nil
 }
 
 func ListActions() error {

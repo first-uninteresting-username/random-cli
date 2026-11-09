@@ -10,9 +10,10 @@ import (
 func init() {
 	err := registry.Register(
 		registry.Action{
-			Name:        "hello-world",
-			Description: "Display the familiar greeting",
-			Run:         helloWorld,
+			Name:          "hello-world",
+			Description:   "Display the familiar greeting",
+			IsDestructive: false,
+			Run:           helloWorld,
 		},
 	)
 	if err != nil {

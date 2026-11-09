@@ -11,9 +11,10 @@ import (
 func init() {
 	err := registry.Register(
 		registry.Action{
-			Name:        "coinflip",
-			Description: "Flip a coin and print heads or tails",
-			Run:         flipCoin,
+			Name:          "coinflip",
+			Description:   "Flip a coin and print heads or tails",
+			IsDestructive: false,
+			Run:           flipCoin,
 		},
 	)
 	if err != nil {

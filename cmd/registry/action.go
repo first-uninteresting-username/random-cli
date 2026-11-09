@@ -9,9 +9,10 @@ import (
 var actions []Action
 
 type Action struct {
-	Name        string
-	Description string
-	Run         func(out io.Writer) error
+	Name          string
+	Description   string
+	IsDestructive bool
+	Run           func(out io.Writer) error
 }
 
 func sortActions() []Action {

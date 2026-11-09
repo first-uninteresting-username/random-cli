@@ -12,6 +12,7 @@ import (
 func main() {
 	actionName := flag.String("action", "", "Select action")
 	list := flag.Bool("list", false, "List all action")
+	allowDestructiveActions := flag.Bool("allow-destructive-and-harmful-actions", false, "Allow destructive and harmful actions")
 	flag.Parse()
 
 	if *list == true {
@@ -23,7 +24,7 @@ func main() {
 		os.Exit(0)
 	}
 
-	action, err := registry.GetAction(*actionName)
+	action, err := registry.GetAction(*actionName, *allowDestructiveActions)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
