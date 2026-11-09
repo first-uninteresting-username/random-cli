@@ -3,6 +3,8 @@ package registry
 import (
 	"fmt"
 	"math/rand/v2"
+	"os"
+	"text/tabwriter"
 )
 
 func Register(a Action) error {
@@ -54,8 +56,16 @@ func getRandomAction() (Action, error) {
 }
 
 func ListActions() error {
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 4, ' ', 0)
 	sorted := sortActions()
-	for _, __ := range sorted {
+
+	for _, action := range sorted {
+		fmt.Fprintf(w, "%s\t%s\n", action.Name, action.Description)
+	}
+
+	err := w.Flush()
+	if err != nil {
+		return err
 	}
 	return nil
 }
