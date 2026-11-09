@@ -3,10 +3,22 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
+
+	_ "github.com/first-uninteresting-username/random-cli/cmd/actions"
+	"github.com/first-uninteresting-username/random-cli/cmd/registry"
 )
 
 func main() {
-	action := flag.String("action", "", "Select action")
+	actionName := flag.String("action", "", "Select action")
 	flag.Parse()
-	fmt.Println(*action)
+
+	action, err := registry.GetAction(*actionName)
+	if err != nil {
+		fmt.Fprint(os.Stderr, err)
+		os.Exit(1)
+	}
+	action.Run(os.Stdout)
+
+	os.Exit(0)
 }
