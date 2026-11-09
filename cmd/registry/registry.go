@@ -5,8 +5,6 @@ import (
 	"math/rand/v2"
 )
 
-var actions []Action
-
 func Register(a Action) error {
 	if a.Name == "" {
 		return fmt.Errorf("action with description %q has empty name", a.Description)
@@ -35,7 +33,7 @@ func GetAction(name string) (Action, error) {
 	}
 
 	if name == "" {
-		return GetRandomAction()
+		return getRandomAction()
 	}
 
 	for _, a := range actions {
@@ -47,10 +45,17 @@ func GetAction(name string) (Action, error) {
 	return Action{}, fmt.Errorf("no action named %q", name)
 }
 
-func GetRandomAction() (Action, error) {
+func getRandomAction() (Action, error) {
 	if len(actions) == 0 {
 		return Action{}, fmt.Errorf("action list is empty")
 	}
 	index := rand.IntN(len(actions))
 	return actions[index], nil
+}
+
+func ListActions() error {
+	sorted := sortActions()
+	for _, __ := range sorted {
+	}
+	return nil
 }

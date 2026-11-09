@@ -11,11 +11,12 @@ import (
 
 func main() {
 	actionName := flag.String("action", "", "Select action")
+	list := flag.Bool("list", false, "List all action")
 	flag.Parse()
 
 	action, err := registry.GetAction(*actionName)
 	if err != nil {
-		fmt.Fprint(os.Stderr, err)
+		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 	action.Run(os.Stdout)
