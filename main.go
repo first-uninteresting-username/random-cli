@@ -7,5 +7,6 @@ import (
 
 func main() {
 	action := flag.String("action", "", "Select action")
-	fmt.Println(action)
+	flag.Parse()
+	fmt.Println(*action)
 }
