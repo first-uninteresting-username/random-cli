@@ -71,8 +71,10 @@ func ListActions() error {
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 4, ' ', 0)
 	sorted := sortActions()
 
+	fmt.Fprint(w, "action\tdescription\tis destructive\n")
+
 	for _, action := range sorted {
-		fmt.Fprintf(w, "%s\t%s\n", action.Name, action.Description)
+		fmt.Fprintf(w, "%s\t%s\t%t\n", action.Name, action.Description, action.IsDestructive)
 	}
 
 	err := w.Flush()
