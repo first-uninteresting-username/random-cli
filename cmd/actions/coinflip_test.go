@@ -31,6 +31,7 @@ func TestFlipCoin(t *testing.T) {
 		}
 	}
 
+	// This not passing once every 3.6 trillion (or so) tries is worth it
 	if heads > 150 || tails > 150 {
 		t.Errorf("coin looks biased: got %d heads and %d tails out of %d flips, want neither side above 150", heads, tails, n)
 	}
