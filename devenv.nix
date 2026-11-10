@@ -17,4 +17,8 @@
     govet.enable = true;
     gotest.enable = true;
   };
+
+  enterTest = ''
+    go test -v ./...
+  '';
 }
