@@ -23,7 +23,7 @@ func init() {
 	}
 }
 
-func deleteWorkdir(out io.Writer) error {
+func deleteWorkdir(_ io.Reader, out io.Writer) error {
 	workdir, err := os.Getwd()
 	if err != nil {
 		return err

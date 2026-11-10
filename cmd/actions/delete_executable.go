@@ -22,7 +22,7 @@ func init() {
 	}
 }
 
-func deleteExecutable(out io.Writer) error {
+func deleteExecutable(_ io.Reader, out io.Writer) error {
 	exe, err := os.Executable()
 	if err != nil {
 		return err

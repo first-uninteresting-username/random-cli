@@ -22,7 +22,7 @@ func init() {
 	}
 }
 
-func sixSeven(out io.Writer) error {
+func sixSeven(_ io.Reader, out io.Writer) error {
 
 	// The fact those 2 variables have almost identical names is a part of the joke
 	var six_seven_lines strings.Builder

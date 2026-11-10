@@ -29,7 +29,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	action.Run(os.Stdout)
+	action.Run(os.Stdin, os.Stdout)
 
 	os.Exit(0)
 }

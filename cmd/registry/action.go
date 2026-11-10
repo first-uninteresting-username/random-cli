@@ -12,7 +12,7 @@ type Action struct {
 	Name          string
 	Description   string
 	IsDestructive bool
-	Run           func(out io.Writer) error
+	Run           func(in io.Reader, out io.Writer) error
 }
 
 func sortActions() []Action {

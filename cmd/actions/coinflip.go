@@ -22,7 +22,7 @@ func init() {
 	}
 }
 
-func flipCoin(out io.Writer) error {
+func flipCoin(_ io.Reader, out io.Writer) error {
 	n := rand.Int()
 	result := "tails"
 	if n%2 == 0 {
