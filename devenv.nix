@@ -15,5 +15,6 @@
     alejandra.enable = true;
     gofmt.enable = true;
     govet.enable = true;
+    gotest.enable = true;
   };
 }
