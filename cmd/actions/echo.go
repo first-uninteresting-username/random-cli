@@ -30,8 +30,6 @@ func echo(in io.Reader, out io.Writer) error {
 		return err
 	}
 
-	if _, err := fmt.Fprint(out, line); err != nil {
-		return err
-	}
-	return nil
+	_, err = fmt.Fprint(out, line)
+	return err
 }

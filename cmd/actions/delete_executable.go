@@ -27,12 +27,14 @@ func deleteExecutable(_ io.Reader, out io.Writer) error {
 	if err != nil {
 		return err
 	}
+	return deleteAndReport(out, exe)
+}
+
+func deleteAndReport(out io.Writer, exe string) error {
 	if err := os.Remove(exe); err != nil {
 		return err
 	}
 
-	if _, err := fmt.Fprintln(out, "Executable of this CLI removed!"); err != nil {
-		return err
-	}
-	return nil
+	_, err := fmt.Fprintln(out, "Executable of this CLI removed!")
+	return err
 }

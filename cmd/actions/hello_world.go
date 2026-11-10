@@ -22,8 +22,6 @@ func init() {
 }
 
 func helloWorld(_ io.Reader, out io.Writer) error {
-	if _, err := fmt.Fprintln(out, "hello, world"); err != nil {
-		return err
-	}
-	return nil
+	_, err := fmt.Fprintln(out, "hello, world")
+	return err
 }

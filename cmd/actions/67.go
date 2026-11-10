@@ -40,8 +40,6 @@ func sixSeven(_ io.Reader, out io.Writer) error {
 		}
 	}
 
-	if _, err := fmt.Fprint(out, six_seven_lines.String()); err != nil {
-		return err
-	}
-	return nil
+	_, err := fmt.Fprint(out, six_seven_lines.String())
+	return err
 }

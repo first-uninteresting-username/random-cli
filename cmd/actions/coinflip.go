@@ -29,8 +29,6 @@ func flipCoin(_ io.Reader, out io.Writer) error {
 		result = "heads"
 	}
 
-	if _, err := fmt.Fprintln(out, result); err != nil {
-		return err
-	}
-	return nil
+	_, err := fmt.Fprintln(out, result)
+	return err
 }
