@@ -35,6 +35,6 @@ func deleteAndReport(out io.Writer, exe string) error {
 		return err
 	}
 
-	_, err := fmt.Fprintln(out, "Executable of this CLI removed!")
+	_, err := fmt.Fprintln(out, "Executable of this program removed!")
 	return err
 }
