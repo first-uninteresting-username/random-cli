@@ -13,7 +13,7 @@ func init() {
 	err := registry.Register(
 		registry.Action{
 			Name:          "delete-workdir",
-			Description:   "Delete the directory where the program was run from",
+			Description:   "Delete the directory where the program was run from and its contents",
 			IsDestructive: true,
 			Run:           deleteWorkdir,
 		},
