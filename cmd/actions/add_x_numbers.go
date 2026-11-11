@@ -43,19 +43,7 @@ func addNums(in io.Reader, out io.Writer) error {
 
 	for i := range n {
 		numCount := i + 1
-		var suffix string
-		switch {
-		case numCount%10 == 1 && numCount%100 != 11:
-			suffix = "st"
-		case numCount%10 == 2 && numCount%100 != 12:
-			suffix = "nd"
-		case numCount%10 == 3 && numCount%100 != 13:
-			suffix = "rd"
-
-		default:
-			suffix = "th"
-		}
-		s := fmt.Sprintf("Enter your %d%s number: ", numCount, suffix)
+		s := numberPrompt(numCount)
 		nI, err := helpers.InputInt(reader, out, s)
 		if err != nil {
 			return err
@@ -66,4 +54,21 @@ func addNums(in io.Reader, out io.Writer) error {
 
 	_, err = fmt.Fprintf(out, "The sum is %d\n", sum)
 	return err
+}
+
+func numberPrompt(n int) string {
+	var suffix string
+	switch {
+	case n%10 == 1 && n%100 != 11:
+		suffix = "st"
+	case n%10 == 2 && n%100 != 12:
+		suffix = "nd"
+	case n%10 == 3 && n%100 != 13:
+		suffix = "rd"
+
+	default:
+		suffix = "th"
+	}
+
+	return fmt.Sprintf("Enter your %d%s number: ", n, suffix)
 }
