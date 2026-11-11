@@ -21,7 +21,9 @@ func init() {
 	}
 }
 
+const helloWorldOutput string = "hello, world"
+
 func helloWorld(_ io.Reader, out io.Writer) error {
-	_, err := fmt.Fprintln(out, "hello, world")
+	_, err := fmt.Fprintln(out, helloWorldOutput)
 	return err
 }

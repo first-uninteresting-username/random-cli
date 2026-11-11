@@ -9,8 +9,6 @@ import (
 )
 
 func TestEcho(t *testing.T) {
-	const prompt = "Enter a string: "
-
 	cases := []struct {
 		name     string
 		input    string
@@ -32,7 +30,7 @@ func TestEcho(t *testing.T) {
 				t.Errorf("err = %v, want %v", err, c.wantErr)
 			}
 
-			want := prompt + c.wantEcho
+			want := echoPrompt + c.wantEcho
 			if got := buf.String(); got != want {
 				t.Errorf("got %q, want %q", got, want)
 			}

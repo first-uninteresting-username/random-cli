@@ -25,10 +25,12 @@ func init() {
 	}
 }
 
+const addNumsPrompt string = "Enter number of numbers to be added: "
+
 func addNums(in io.Reader, out io.Writer) error {
 	reader := bufio.NewReader(in)
 
-	n, err := helpers.InputInt(reader, out, "Enter number of numbers to be added: ")
+	n, err := helpers.InputInt(reader, out, addNumsPrompt)
 	if err != nil {
 		return err
 	}

@@ -13,7 +13,7 @@ func TestHelloWorld(t *testing.T) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 
-	want := "hello, world\n"
+	want := helloWorldOutput + "\n"
 	got := buf.String()
 
 	if got != want {

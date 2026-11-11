@@ -22,8 +22,10 @@ func init() {
 	}
 }
 
+const echoPrompt string = "Enter a string: "
+
 func echo(in io.Reader, out io.Writer) error {
-	fmt.Fprint(out, "Enter a string: ")
+	fmt.Fprint(out, echoPrompt)
 	reader := bufio.NewReader(in)
 	line, err := reader.ReadString('\n')
 	if err != nil {

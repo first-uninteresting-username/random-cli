@@ -28,7 +28,7 @@ func TestDeleteWorkdir(t *testing.T) {
 		t.Errorf("unexpected error %v", err)
 	}
 
-	want := "Current directory removed!\n"
+	want := deleteWorkdirOutput + "\n"
 	got := buf.String()
 
 	if got != want {

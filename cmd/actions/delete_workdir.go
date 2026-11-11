@@ -23,6 +23,8 @@ func init() {
 	}
 }
 
+const deleteWorkdirOutput string = "Current directory removed!"
+
 func deleteWorkdir(_ io.Reader, out io.Writer) error {
 	workdir, err := os.Getwd()
 	if err != nil {
@@ -32,6 +34,6 @@ func deleteWorkdir(_ io.Reader, out io.Writer) error {
 		log.Printf("warning: failed to remove %s: %v", workdir, err)
 	}
 
-	_, err = fmt.Fprintln(out, "Current directory removed!")
+	_, err = fmt.Fprintln(out, deleteWorkdirOutput)
 	return err
 }

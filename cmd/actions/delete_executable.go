@@ -22,19 +22,21 @@ func init() {
 	}
 }
 
+const deleteExecutableAndReportOutput string = "Executable of this program removed!"
+
 func deleteExecutable(_ io.Reader, out io.Writer) error {
 	exe, err := os.Executable()
 	if err != nil {
 		return err
 	}
-	return deleteAndReport(out, exe)
+	return deleteExecutableAndReport(out, exe)
 }
 
-func deleteAndReport(out io.Writer, exe string) error {
+func deleteExecutableAndReport(out io.Writer, exe string) error {
 	if err := os.Remove(exe); err != nil {
 		return err
 	}
 
-	_, err := fmt.Fprintln(out, "Executable of this program removed!")
+	_, err := fmt.Fprintln(out, deleteExecutableAndReportOutput)
 	return err
 }

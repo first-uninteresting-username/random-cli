@@ -18,12 +18,12 @@ func TestDeleteExecutable(t *testing.T) {
 		t.Fatalf("could not create file in %q", dir)
 	}
 
-	err := deleteAndReport(&buf, filePath)
+	err := deleteExecutableAndReport(&buf, filePath)
 	if err != nil {
 		t.Errorf("unexpected error %v", err)
 	}
 
-	want := "Executable of this program removed!\n"
+	want := deleteExecutableAndReportOutput + "\n"
 	got := buf.String()
 
 	if got != want {
