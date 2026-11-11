@@ -4,9 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"strconv"
-	"strings"
 
+	"github.com/first-uninteresting-username/random-cli/cmd/helpers"
 	"github.com/first-uninteresting-username/random-cli/cmd/registry"
 )
 
@@ -27,14 +26,9 @@ func init() {
 }
 
 func addNums(in io.Reader, out io.Writer) error {
-	fmt.Fprint(out, "Enter number of numbers to be added: ")
 	reader := bufio.NewReader(in)
-	num, err := reader.ReadString('\n')
-	if err != nil {
-		return err
-	}
 
-	n, err := strconv.Atoi(strings.TrimSpace(num))
+	n, err := helpers.InputInt(reader, out, "Enter number of numbers to be added: ")
 	if err != nil {
 		return err
 	}
@@ -50,7 +44,7 @@ func addNums(in io.Reader, out io.Writer) error {
 		var suffix string
 		switch {
 		case numCount%10 == 1 && numCount%100 != 11:
-			suffix = "th"
+			suffix = "st"
 		case numCount%10 == 2 && numCount%100 != 12:
 			suffix = "nd"
 		case numCount%10 == 3 && numCount%100 != 13:
@@ -59,14 +53,8 @@ func addNums(in io.Reader, out io.Writer) error {
 		default:
 			suffix = "th"
 		}
-
-		fmt.Fprintf(out, "Enter your %d%s number: ", numCount, suffix)
-
-		numI, err := reader.ReadString('\n')
-		if err != nil {
-			return err
-		}
-		nI, err := strconv.Atoi(strings.TrimSpace(numI))
+		s := fmt.Sprintf("Enter your %d%s number: ", numCount, suffix)
+		nI, err := helpers.InputInt(reader, out, s)
 		if err != nil {
 			return err
 		}
