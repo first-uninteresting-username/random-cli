@@ -10,7 +10,7 @@ longer applies.
 ## Learning comes first
 
 The user wants to learn. Default to teaching, explaining the reasoning, and using
-pseudocode in chat and explanatory comments unless the user asks otherwise.
+python-like pseudocode in chat and explanatory comments unless the user asks otherwise.
 
 - Start with the idea and explain why it works. Define unfamiliar terms and use
   small examples tied to the code being discussed.
