@@ -39,10 +39,28 @@ func addNums(in io.Reader, out io.Writer) error {
 		return err
 	}
 
+	if n < 0 {
+		n = -n
+	}
+
 	var sum int
 
-	for i := 0; i < n; i++ {
-		fmt.Fprintf(out, "Enter your %dth number: ", i+1)
+	for i := range n {
+		numCount := i + 1
+		var suffix string
+		switch {
+		case numCount%10 == 1 && numCount%100 != 11:
+			suffix = "th"
+		case numCount%10 == 2 && numCount%100 != 12:
+			suffix = "nd"
+		case numCount%10 == 3 && numCount%100 != 13:
+			suffix = "rd"
+
+		default:
+			suffix = "th"
+		}
+
+		fmt.Fprintf(out, "Enter your %d%s number: ", numCount, suffix)
 
 		numI, err := reader.ReadString('\n')
 		if err != nil {
